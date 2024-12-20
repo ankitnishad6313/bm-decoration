@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+   
+    # Handle public folder
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+    
+    # Handle Laravel routes
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+    
+    
+    RewriteCond %{SERVER_PORT} 80
+
+RewriteRule ^(.*)$ https://bmdecoration.com/$1 [R,L]
+</IfModule>
